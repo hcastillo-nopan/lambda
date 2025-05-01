@@ -1,8 +1,7 @@
 [versions]
 
 [libraries]
-amazon_lambda_java = { module = "com.amazonaws:aws-lambda-java-core", version = "1.2.3" }
-spring_cloud_function_adapter = { module = "org.springframework.cloud:spring-cloud-function-adapter-aws", version = "4.2.2" }
+quarkus-lambda = { module = "io.quarkus:quarkus-amazon-lambda", version = "3.22.1" }
 
 [plugins]
-graalvm-build-plugin = { id = "org.graalvm.buildtools.native", version = "0.10.6" }
+quarkus-plugin = { id = "io.quarkus", version = "3.22.1" }
