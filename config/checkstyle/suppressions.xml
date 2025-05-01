@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC
+        "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+        "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+
+<suppressions>
+    <!-- Exclude all files in generated directory -->
+    <suppress files="[\\/]generated[\\/]" checks=".*"/>
+
+    <!-- Exclude files with .generated.java suffix -->
+    <suppress files=".*\.generated\.java$" checks=".*"/>
+
+    <!-- Exclude specific generated directory -->
+    <suppress files="src[\\/]main[\\/]generated[\\/].*" checks=".*"/>
+
+    <!-- Exclude generated sources from specific package -->
+    <suppress files="com[\\/]example[\\/]generated[\\/].*" checks=".*"/>
+</suppressions>
