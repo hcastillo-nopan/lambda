@@ -37,7 +37,7 @@ resource "aws_lambda_function" "nopan_lambda_native" {
   function_name = "NopanLambda"
   role          = aws_iam_role.nopan_lambda_role.arn
   handler       = "bootstrap"
-  runtime       = "provided.al2023"
+  runtime       = "provided.al2023" //Amazon Linux 2023
   filename      = "../build/function.zip"
   source_code_hash = filebase64sha256("../build/function.zip")
   architectures = ["arm64"]

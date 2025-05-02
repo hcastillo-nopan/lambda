@@ -24,7 +24,8 @@
 quarkus.native.enabled,
 
 ## TODO
-- Example with random, fix with annotation
+- Build logic to profile
+- Redact Why section
 - Explain AOT compilation
 - Deploy 2 lambdas, one jar and one native and compare
-- Maybe move some build logic to profile
+- Example with random, fix with annotation
