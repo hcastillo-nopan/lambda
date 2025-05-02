@@ -13,6 +13,6 @@ dependencies {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(file(".java-version").readText(Charsets.UTF_8))
+        languageVersion = JavaLanguageVersion.of("21")
     }
 }
