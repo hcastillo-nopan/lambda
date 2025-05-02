@@ -6,13 +6,15 @@ resource "aws_iam_role" "nopan_lambda_role" {
   name = "NopanLambdaRole"
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
-    Statement = [{
-      Action = "sts:AssumeRole",
-      Effect = "Allow",
-      Principal = {
-        Service = "lambda.amazonaws.com"
-      },
-    }],
+    Statement = [
+      {
+        Action = "sts:AssumeRole",
+        Effect = "Allow",
+        Principal = {
+          Service = "lambda.amazonaws.com"
+        },
+      }
+    ],
   })
 }
 
@@ -21,12 +23,23 @@ resource "aws_iam_role_policy_attachment" "nopan_lambda_policy_attachment" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
-resource "aws_lambda_function" "nopan_lambda" {
+# resource "aws_lambda_function" "nopan_lambda" {
+#   function_name = "NopanLambda"
+#   role          = aws_iam_role.nopan_lambda_role.arn
+#   handler       = "io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest"
+#   runtime       = "java21"
+#   filename      = "../build/function.zip"
+#   source_code_hash = filebase64sha256("../build/function.zip")
+#   timeout       = 10
+# }
+
+resource "aws_lambda_function" "nopan_lambda_native" {
   function_name = "NopanLambda"
   role          = aws_iam_role.nopan_lambda_role.arn
-  handler       = "io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest"
-  runtime       = "java21"
+  handler       = "bootstrap"
+  runtime       = "provided.al2023"
   filename      = "../build/function.zip"
   source_code_hash = filebase64sha256("../build/function.zip")
-  timeout = 10
+  architectures = ["arm64"]
+  timeout       = 10
 }
