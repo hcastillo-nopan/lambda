@@ -1,7 +1,8 @@
-# GraalVM Lambda
+# AWS Lambda
 
 ## Context
-- At some point in the future we might want to have lightweight AWS Lambdas functions for some scenarios: e.g. DynamoDB trigger, SNS event, scheduled job
+- At some point in the future we might want to have lightweight AWS Lambdas functions for some scenarios
+- A good candidate is to process a DynamoDB stream into AWS Redshift for analytics
 - Normally AWS Lambdas use a lightweight runtime to save costs - we are charged by memory footprint and execution time)
 - This doesn't fit very good with Java, but there is a way to improve the cost of running Java based lambdas
 
@@ -10,13 +11,11 @@
 - It used AOT (ahead of time) compilation, which means that the Java code is compiled before it is run during build time
 
 ## Why Quarkus
-- AWS Lambda builder out of the box.
-- Compatible also with AWS API gateway - Lambda proxy integration
-- Spring build not natively compatible with GraalVM. Dependencies are not native-friendly and might need more tweaks.
-- Drawback: Nopan starter will not work with Quarkus.
+- AWS Lambda builder out of the box - one library only
+- Spring build is not natively compatible with GraalVM.
+- Dependencies are also native-friendly
 
 ## Drawbacks
-- Nopan starter will not work with Quarkus
 - GraalVM will require extra tweaks for reflection and usage of `Random`
 
 ## How to deploy
